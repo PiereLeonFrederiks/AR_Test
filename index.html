@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Custom 3D Model Web Showroom</title>
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
+  <style>
+    :root {
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --accent-color: #2f80ed;
+      --text-color: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--bg-color);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 500px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    /* Target the 3D canvas viewport */
+    model-viewer {
+      width: 100%;
+      height: 400px;
+      background-color: #252525;
+      border-radius: 12px;
+      --poster-color: transparent;
+    }
+
+    /* Style the default AR activation button provided by Google */
+    #ar-button {
+      background-color: var(--accent-color);
+      border-radius: 8px;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 20px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s ease;
+    }
+
+    #ar-button:hover {
+      background-color: #1b66ca;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Custom AR Workspace</h1>
+    <p>Rotate the model on desktop, or tap below on mobile to place it in your room.</p>
+
+    <model-viewer 
+      src="my-model.glb" 
+      ar 
+      ar-modes="webxr scene-viewer quick-look" 
+      ar-scale="fixed"
+      camera-controls 
+      touch-action="none">
+      
+      <button slot="ar-button" id="ar-button">
+        👋 Launch AR Experience
+      </button>
+
+    </model-viewer>
+  </div>
+
+</body>
+</html>
